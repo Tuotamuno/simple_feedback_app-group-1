@@ -1,0 +1,103 @@
+/* Base styling */
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Center container */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Main content card */
+  .card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Headings */
+  .card h2,
+  .container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Form inputs */
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  /* Textarea adjustments */
+  form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  /* Submit & login buttons */
+  form button,
+  .button-link {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  form button:hover,
+  .button-link:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link-style buttons container */
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* Error or success messages (flashes) */
+  .flash {
+    background-color: #ffdddd;
+    color: #a94442;
+    padding: 10px;
+    border-left: 6px solid #f44336;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    text-align: center;
+  }
+  
+  /* Centered form in login page */
+  .login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  

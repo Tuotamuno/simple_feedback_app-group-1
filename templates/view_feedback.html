@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Feedback</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>All Feedback</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Level</th>
+          <th>Feedback</th>
+          <th>Reply</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for feedback in feedbacks %}
+          <tr>
+            <td>{{ loop.index }}</td> <!-- Using loop.index for 1-based index -->
+            <td>{{ feedback.name }}</td>
+            <td>{{ feedback.department }}</td>
+            <td>{{ feedback.level }}</td>
+            <td>{{ feedback.content }}</td>
+            <td>{{ feedback.reply or "No reply yet" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <nav>
+      <a href="/" class="button-link">Go Back</a>
+      <a href="/staff/dashboard" class="button-link">Staff Dashboard</a>
+    </nav>
+  </div>
+</body>
+</html>
