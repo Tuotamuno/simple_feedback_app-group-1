@@ -1,42 +1,35 @@
-<!-- templates/staff_dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Feedback Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>Staff Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>All Feedback</h1>
-
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <ul class="flashes">
-              {% for message in messages %}
-                <li>{{ message }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        {% endwith %}
-
-        {% for fb in feedbacks %}
-        <div class="card">
-            <p><strong>ID:</strong> {{ fb.id }}</p>
-            <p><strong>Name:</strong> {{ fb.name }}</p>
-            <p><strong>Level:</strong> {{ fb.level }}</p>
-            <p><strong>Feedback:</strong> {{ fb.message }}</p>
-            <p><strong>Reply:</strong> {{ fb.reply or "No reply yet." }}</p>
-            <form method="POST" action="{{ url_for('reply', feedback_id=fb.id) }}">
-                <textarea name="reply" placeholder="Write a reply..." required></textarea>
-                <button type="submit">Send Reply</button>
+  <div class="container">
+    <div class="card">
+      <h2>Staff Dashboard</h2>
+      
+      <div class="feedback-list">
+        {% for feedback in feedbacks %}
+          <div class="feedback-item">
+            <p><strong>Name:</strong> {{ feedback.name }}</p>
+            <p><strong>Department:</strong> {{ feedback.department }}</p>
+            <p><strong>Level:</strong> {{ feedback.level }}</p>
+            <p><strong>Content:</strong> {{ feedback.content }}</p>
+            <form method="POST" action="{{ url_for('reply', feedback_id=feedback.id) }}">
+              <textarea name="reply" placeholder="Reply to feedback" required></textarea>
+              <button type="submit">Reply</button>
             </form>
-        </div>
+            <p><strong>Reply:</strong> {{ feedback.reply }}</p>
+          </div>
         {% endfor %}
+      </div>
 
-        <div class="buttons">
-            <a href="{{ url_for('logout') }}"><button>Logout</button></a>
-        </div>
+      <div class="nav-buttons">
+        <a href="{{ url_for('staff_logout') }}" class="button-link">Logout</a>
+      </div>
     </div>
+  </div>
 </body>
 </html>

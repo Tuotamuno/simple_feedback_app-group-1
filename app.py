@@ -85,6 +85,12 @@ def staff_dashboard():
     feedbacks = Feedback.query.all()
     return render_template('staff_dashboard.html', feedbacks=feedbacks)
 
+@app.route('/staff/logout')
+def staff_logout():
+    session.pop('staff_id', None)
+    flash("Logged out successfully")
+    return redirect(url_for('staff_login'))
+
 @app.route('/reply/<int:feedback_id>', methods=['POST'])
 def reply(feedback_id):
     if 'staff_id' not in session:
@@ -95,14 +101,7 @@ def reply(feedback_id):
     flash("Reply sent.")
     return redirect(url_for('staff_dashboard'))
 
-@app.route('/logout')
-def logout():
-    session.pop('staff_id', None)
-    flash("Logged out successfully")
-    return redirect(url_for('staff_login'))
-
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-

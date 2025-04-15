@@ -7,35 +7,23 @@
 </head>
 <body>
   <div class="container">
-    <h2>All Feedback</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Department</th>
-          <th>Level</th>
-          <th>Feedback</th>
-          <th>Reply</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="card">
+      <h2>All Feedback</h2>
+      {% if feedbacks %}
         {% for feedback in feedbacks %}
-          <tr>
-            <td>{{ loop.index }}</td> <!-- Using loop.index for 1-based index -->
-            <td>{{ feedback.name }}</td>
-            <td>{{ feedback.department }}</td>
-            <td>{{ feedback.level }}</td>
-            <td>{{ feedback.content }}</td>
-            <td>{{ feedback.reply or "No reply yet" }}</td>
-          </tr>
+          <div style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
+            <strong>{{ loop.index }}. {{ feedback.name }}</strong> ({{ feedback.department }}, Level: {{ feedback.level }})<br>
+            <p>{{ feedback.content }}</p>
+          </div>
         {% endfor %}
-      </tbody>
-    </table>
-    <nav>
-      <a href="/" class="button-link">Go Back</a>
-      <a href="/staff/dashboard" class="button-link">Staff Dashboard</a>
-    </nav>
+      {% else %}
+        <p>No feedback available.</p>
+      {% endif %}
+      <div class="nav-buttons">
+        <a href="{{ url_for('index') }}" class="button-link">Back to Home</a>
+        <a href="{{ url_for('staff_login') }}" class="button-link">Admin Login</a>
+      </div>
+    </div>
   </div>
 </body>
 </html>

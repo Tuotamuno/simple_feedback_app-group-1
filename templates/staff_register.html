@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Staff Registration</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Staff Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="staff-register-wrapper">
-    <div class="register-container">
-      <h2>Staff Registration</h2>
-      <form method="POST" action="{{ url_for('staff_register') }}">
-        <div class="input-group">
-          <input type="text" name="username" placeholder="Username" required>
-        </div>
-        <div class="input-group">
-          <input type="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="input-group">
-          <input type="password" name="confirm" placeholder="Confirm Password" required>
-        </div>
-        <button type="submit" class="btn">Register</button>
-      </form>
-      <p>Already registered? <a href="{{ url_for('staff_login') }}">Login here</a></p>
+    <div class="container">
+        <h2>Staff Registration</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <a href="{{ url_for('staff_login') }}" class="button-link">Back to Login</a>
     </div>
-  </div>
 </body>
 </html>
