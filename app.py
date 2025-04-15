@@ -1,9 +1,13 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+
+load_dotenv
 
 app = Flask(__name__)
-app.secret_key = 'secretkey'
+app.secret_key = os.getenv("SECRET_KEY", os.urandom(24))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///feedback.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
